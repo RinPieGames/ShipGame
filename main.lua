@@ -11,7 +11,8 @@ end
 
 function love.load()
   screens = {
-    menuMain = require("sce/menuMain")
+    menuMain = require("sce/menuMain"),
+    singleGame = require("sce/singleGame")
   }
 
   Scrmng.init(screens, "menuMain")

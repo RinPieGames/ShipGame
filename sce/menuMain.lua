@@ -10,14 +10,12 @@ local Menu = {}
 function Menu.new()
   local self = screen.new()
 
-  local player = play(_G.Width / 2, _G.Height / 2)
+  _G.switch("singleGame")
 
   function self:update(dt)
-    player:update(dt)
   end
 
   function self:draw()
-    player:draw()
   end
 
   return self
