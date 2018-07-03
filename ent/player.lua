@@ -21,8 +21,7 @@ local player = object:extend()
 
 --The initial settings of the player
 function player:new(x,y)
-  self.x = x or 0
-  self.y = y or 0
+  self.pos = {x = x or 0, y = y or 0}
   self.initx = x
   self.inity = y
   self.v = {x = 0, y = 0}
@@ -44,15 +43,15 @@ function player:update(dt)
   --[[When the b or space key on the controller or keyboard respectively are pressed
   then the ship will fire a bullet]]
   if playbaton:down("action") and (love.timer.getTime() - start) >= .25 then
-    pewlet = pew(self.x, self.y, self.r)
+    pewlet = pew(self.pos.x, self.pos.y, self.r)
     table.insert(pewList, pewlet)
     start = love.timer.getTime()
   end
 
 --resets player position if a is used on keyboars or controller
   if playbaton:down("reset") then
-    self.x = self.initx
-    self.y = self.inity
+    self.pos.x = self.initx
+    self.pos.y = self.inity
   end
 
 --resets degree value
@@ -90,8 +89,8 @@ function player:update(dt)
   end
 
 --The position of the player is changed per second
-  self.x = self.x + self.v.x * dt
-  self.y = self.y + self.v.y * dt
+  self.pos.x = self.pos.x + self.v.x * dt
+  self.pos.y = self.pos.y + self.v.y * dt
 
   --Handles the updates for the bullets
   if pewList ~= nil then
@@ -103,23 +102,23 @@ end
 
 --The function loops the player from wall to wall
 function player:loop()
-  if self.x - self.image:getWidth() / 2 < 0 then
-    self.x = _G.Width - self.image:getWidth() / 2
-  elseif self.x + self.image:getWidth() / 2 > _G.Width then
-    self.x = self.image:getWidth() / 2
+  if self.pos.x - self.image:getWidth() / 2 < 0 then
+    self.pos.x = _G.Width - self.image:getWidth() / 2
+  elseif self.pos.x + self.image:getWidth() / 2 > _G.Width then
+    self.pos.x = self.image:getWidth() / 2
   end
 
-  if self.y - self.image:getHeight() / 2 < 0 then
-    self.y = _G.Height - self.image:getHeight() / 2
-  elseif self.y + self.image:getHeight() / 2 > _G.Height then
-    self.y = self.image:getHeight() / 2
+  if self.pos.y - self.image:getHeight() / 2 < 0 then
+    self.pos.y = _G.Height - self.image:getHeight() / 2
+  elseif self.pos.y + self.image:getHeight() / 2 > _G.Height then
+    self.pos.y = self.image:getHeight() / 2
   end
 end
 
 --Draws the player to the screen
 function player:draw()
   love.graphics.setColor(self.clr.r, self.clr.g, self.clr.b)
-  love.graphics.draw(self.image, self.x, self.y, self.r, 1, 1, self.image:getWidth() / 2, self.image:getHeight() / 2)
+  love.graphics.draw(self.image, self.pos.x, self.pos.y, self.r, 1, 1, self.image:getWidth() / 2, self.image:getHeight() / 2)
 
   --The graphics for the bullets
   if pewList ~= nil then

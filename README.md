@@ -1,6 +1,6 @@
 # ShipGame
 Created by: RinPie<br />
-Date of Creation: 11806.30<br /> 
+Date of Creation: 11806.30<br />
 Last update: 11807.03<br />
 Current Version: V0.2<br />
 
@@ -17,6 +17,8 @@ The libraries used in this game can be found in the files, but just to list them
 - [Classic](https://www.github.com/rxi/classic) by Rxi
 - [Moan](https://www.github.com/ttxi/Moan.lua) by Ttxi
 - [ScreenManager](https://www.github.com/rm-code/screenmanager) by Rm-code
+- [Anim8]() by
+- [Bump]() by
 
 For the image that appears in the game:
 - [Cat Pixel](http://www.icongenerators.net/catdot.html) on Icon Generators
