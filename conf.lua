@@ -1,7 +1,8 @@
 --[[
 Game Developer: RinPie
 Game Null Date: 11806.30
-Game Version: V0.2
+Last Update: 11807.03
+Game Version: V0.3
 Game Notes: Now features a little message to introduce controls
 ]]
 
