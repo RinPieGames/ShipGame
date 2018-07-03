@@ -1,10 +1,9 @@
 # ShipGame
-<pre>
-Created by: RinPie
-Date of Creation: 11806.30
-Last update: 11807.03
-Current Version: V0.2
-</pre>
+Created by: RinPie<br />
+Date of Creation: 11806.30<br /> 
+Last update: 11807.03<br />
+Current Version: V0.2<br />
+
 
 This is just a small asteroid-esque game with a small ship. I am a beginner in the
 game development community so I am practicing everything I have learned up till now
