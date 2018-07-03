@@ -10,12 +10,14 @@ local Menu = {}
 function Menu.new()
   local self = screen.new()
 
-  _G.switch("singleGame")
-
   function self:update(dt)
+    if suit.Button("Start Game", _G.Width / 2 - 50, _G.Height / 2 - 25, 100, 50).hit then
+      _G.switch("singleGame")
+    end
   end
 
   function self:draw()
+    suit.draw()
   end
 
   return self

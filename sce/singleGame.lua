@@ -13,7 +13,7 @@ function Game.new()
   continue = false
 
   moanImage = love.graphics.newImage("img/NekoRin.png")
-  moan.speak({"RinPie", {0, 255, 0}}, {
+  moan.speak({"RinPie", {1, 1, 1}}, {
     "This game is incomplete, at the current moment you can only move and fire bullets",
     "To move, you could use the arrow keys on keyboard or the d-pad or left stick on controller",
     "You can slow down by using left shift on keyboard or right bumper on the controller",
@@ -21,7 +21,8 @@ function Game.new()
     "Finally you can fire by using space on keyboard or by pressing b on the controller"
   }, {x = 10, y = 10, image = moanImage, oncomplete = function() continue = true end})
 
-  local control = baton.new {controls = {next = {"key:space", "key:return", "button:rightshoulder"}}}
+  local control = baton.new {controls = {next = {"key:space", "key:return", "button:a"}},
+joystick = love.joystick.getJoysticks()[1]}
 
   start = love.timer.getTime()
 

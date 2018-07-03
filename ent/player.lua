@@ -39,6 +39,7 @@ local pewList = {}
 --Updates the player per tick in love
 function player:update(dt)
   playbaton:update()
+  self:loop()
 
   --[[When the b or space key on the controller or keyboard respectively are pressed
   then the ship will fire a bullet]]
@@ -68,6 +69,7 @@ function player:update(dt)
     self.r = self.r + self.w * dt
   end
 
+  --Handles acceleration in either forwards or backwards relative to the ship
   if playbaton:down("up") then
     self.v.y = self.v.y - self.acc * dt * math.cos(self.r)
     self.v.x = self.v.x - self.acc * dt * math.sin(-self.r)
@@ -96,6 +98,21 @@ function player:update(dt)
     for _,pew in pairs(pewList) do
       pew:update(dt)
     end
+  end
+end
+
+--The function loops the player from wall to wall
+function player:loop()
+  if self.x - self.image:getWidth() / 2 < 0 then
+    self.x = _G.Width - self.image:getWidth() / 2
+  elseif self.x + self.image:getWidth() / 2 > _G.Width then
+    self.x = self.image:getWidth() / 2
+  end
+
+  if self.y - self.image:getHeight() / 2 < 0 then
+    self.y = _G.Height - self.image:getHeight() / 2
+  elseif self.y + self.image:getHeight() / 2 > _G.Height then
+    self.y = self.image:getHeight() / 2
   end
 end
 

@@ -1,6 +1,6 @@
 -------------------------------------------------
 -- Möan.lua
--- A simple messagebox system for LÖVE <br><br> Forum link: 
+-- A simple messagebox system for LÖVE <br><br> Forum link:
 -- [https://love2d.org/forums/viewtopic.php?f=5&t=84110](https://love2d.org/forums/viewtopic.php?f=5&t=84110)
 -- <br>GitHub: [https://github.com/twentytwoo/Moan.lua](https://github.com/twentytwoo/Moan.lua)
 -- <br><br><img src="https://github.com/twentytwoo/Moan.lua/raw/master/preview.gif" style="max-width: 100%">
@@ -43,7 +43,7 @@ local utf8 = require("utf8")
 -- @tparam table UI UI configuration
 -------------------------------------------------
 Moan = {
-  indicatorCharacter = ">",
+  indicatorCharacter = "Enter (A)",
   optionCharacter = "=> ",
   indicatorDelay = 25,
   selectButton = "space",
@@ -311,6 +311,8 @@ function Moan.draw()
   if Moan.showingMessage then
     local scale = 0.26
     local padding = 10
+    local txtPadding = 27
+    local pad = 10
 
     local boxH = 118
     local boxW = love.graphics.getWidth()-(2*padding)
@@ -357,8 +359,8 @@ function Moan.draw()
     local optionsY = textY+Moan.font:getHeight(printedText)-(padding/1.6)
     local optionsSpace = fontHeight/1.5
 
-    local fontColour = { 255, 255, 255, 255 }
-    local boxColour = { 0, 0, 0, 222 }
+    local fontColour = { 1, 1, 1, 1}
+    local boxColour = { 0, 0, .75, .40 }
 
 
     love.graphics.setFont(Moan.font)
@@ -384,9 +386,9 @@ function Moan.draw()
 
     -- Message text
     if Moan.autoWrap then
-      love.graphics.print(printedText, textX, textY)
+      love.graphics.print(printedText, textX, textY+pad)
     else
-      love.graphics.printf(printedText, textX, textY, msgLimit)
+      love.graphics.printf(printedText, textX, textY+pad, msgLimit)
     end
 
     -- Message options (when shown)
@@ -400,7 +402,7 @@ function Moan.draw()
     -- Next message/continue indicator
     if Moan.showIndicator then
       if not (Moan.UI.imagePos == "right" and type(Moan.currentImage) == "userdata") then
-        love.graphics.print(Moan.indicatorCharacter, boxX+boxW-(2.5*padding), boxY+boxH-(padding/2)-fontHeight)
+        love.graphics.print(Moan.indicatorCharacter, boxX+boxW-(2.5*txtPadding), boxY+boxH-(txtPadding/2)-fontHeight)
       end
     end
   end
